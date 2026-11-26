@@ -28,14 +28,15 @@
         app:layout_constraintTop_toBottomOf="@id/tvUserRegistrationTitle">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            app:cardCornerRadius="64dp">
+            android:layout_width="@dimen/huge_128dp"
+            android:layout_height="@dimen/huge_128dp"
+            app:cardCornerRadius="@dimen/xl_64dp">
 
             <ImageView
                 android:id="@+id/ivAddPhoto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 android:contentDescription="@string/botao_adicionar_foto_de_usuario"
                 android:src="@drawable/img_add_button" />
 

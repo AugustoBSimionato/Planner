@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.augusto.planner.R
 import com.augusto.planner.databinding.FragmentInitialLoadingBinding
+import com.augusto.planner.ui.viewmodel.UserRegistrationViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -18,6 +21,8 @@ class InitialLoadingFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val navController by lazy { findNavController() }
+
+    private val userRegistrationViewModel by activityViewModels<UserRegistrationViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,10 +36,14 @@ class InitialLoadingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            // TODO: lógica da tela de loading inicial (ir para cadastro do usuário ou home)
             lifecycleScope.launch {
                 delay(1_500)
-                navController.navigate(R.id.action_initialLoadingFragment_to_userRegistrationFragment)
+
+                navController.navigate(
+                    if (userRegistrationViewModel.getIsUserRegistered())
+                        R.id.action_initialLoadingFragment_to_homeFragment
+                    else
+                        R.id.action_initialLoadingFragment_to_userRegistrationFragment)
             }
         }
     }
