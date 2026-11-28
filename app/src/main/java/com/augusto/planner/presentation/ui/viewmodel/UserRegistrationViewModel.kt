@@ -1,12 +1,12 @@
-package com.augusto.planner.ui.viewmodel
+package com.augusto.planner.presentation.ui.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.augusto.planner.data.datasource.AuthenticationLocalDataSource
 import com.augusto.planner.data.datasource.UserRegistrationLocalDataSource
-import com.augusto.planner.data.di.MainServiceLocator
-import com.augusto.planner.data.model.Profile
+import com.augusto.planner.core.di.MainServiceLocator
+import com.augusto.planner.domain.model.Profile
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -67,18 +67,6 @@ class UserRegistrationViewModel: ViewModel() {
         return userRegistrationLocalDataSource.getUserRegistration()
     }
 
-    fun saveProfile(onCompleted: () -> Unit) {
-        viewModelScope.launch {
-            async {
-                userRegistrationLocalDataSource.saveProfile(profile = profile.value)
-                userRegistrationLocalDataSource.saveUserRegistration(isUserRegistered = true)
-                authenticationLocalDataSource.insertToken(token = mockToken)
-                _isTokenValid.value = true
-            }.await()
-            onCompleted()
-        }
-    }
-
     fun updateProfile(
         name: String? = null,
         email: String? = null,
@@ -96,6 +84,18 @@ class UserRegistrationViewModel: ViewModel() {
             )
             _isProfileValid.update { updatedProfile.isValid() }
             updatedProfile
+        }
+    }
+
+    fun saveProfile(onCompleted: () -> Unit) {
+        viewModelScope.launch {
+            async {
+                userRegistrationLocalDataSource.saveProfile(profile = profile.value)
+                userRegistrationLocalDataSource.saveUserRegistration(isUserRegistered = true)
+                authenticationLocalDataSource.insertToken(token = mockToken)
+                _isTokenValid.value = true
+            }.await()
+            onCompleted()
         }
     }
 

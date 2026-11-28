@@ -1,4 +1,4 @@
-package com.augusto.planner.data.model
+package com.augusto.planner.domain.model
 
 import kotlinx.serialization.Serializable
 

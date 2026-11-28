@@ -1,4 +1,4 @@
-package com.augusto.planner.data.utils
+package com.augusto.planner.domain.utils
 
 import android.content.Context
 import android.graphics.Bitmap

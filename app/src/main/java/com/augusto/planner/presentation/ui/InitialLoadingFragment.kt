@@ -1,4 +1,4 @@
-package com.augusto.planner.ui
+package com.augusto.planner.presentation.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.augusto.planner.R
 import com.augusto.planner.databinding.FragmentInitialLoadingBinding
-import com.augusto.planner.ui.viewmodel.UserRegistrationViewModel
+import com.augusto.planner.presentation.ui.viewmodel.UserRegistrationViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

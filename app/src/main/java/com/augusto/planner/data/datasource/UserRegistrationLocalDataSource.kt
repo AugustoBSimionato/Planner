@@ -1,6 +1,6 @@
 package com.augusto.planner.data.datasource
 
-import com.augusto.planner.data.model.Profile
+import com.augusto.planner.domain.model.Profile
 import kotlinx.coroutines.flow.Flow
 
 interface UserRegistrationLocalDataSource {

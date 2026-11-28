@@ -1,4 +1,4 @@
-package com.augusto.planner.ui
+package com.augusto.planner.presentation.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,15 +10,13 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.augusto.planner.R
-import com.augusto.planner.data.utils.imageBitmapToBase64
-import com.augusto.planner.data.utils.imageUriToBitmap
+import com.augusto.planner.domain.utils.imageBitmapToBase64
+import com.augusto.planner.domain.utils.imageUriToBitmap
 import com.augusto.planner.databinding.FragmentUserRegistrationBinding
-import com.augusto.planner.ui.viewmodel.UserRegistrationViewModel
-import kotlinx.coroutines.flow.collect
+import com.augusto.planner.presentation.ui.viewmodel.UserRegistrationViewModel
 import kotlinx.coroutines.launch
 
 class UserRegistrationFragment : Fragment() {

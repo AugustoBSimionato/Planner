@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     kotlin("plugin.serialization") version "2.1.0"
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -37,6 +38,10 @@ android {
 }
 
 dependencies {
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
+    implementation(libs.room.ktx)
+
     implementation(libs.datastore.preferences)
 
     implementation(libs.datastore)
